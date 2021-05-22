@@ -1,10 +1,12 @@
-// console.log("Hi");
-
-function sum(num){
-    let number=0;
-    for(let i=0; i<=num; i++){
-        number= num+i;
+function sum(n){
+    let sum = 0
+    for(let i=1; i<=n; i++){
+        sum += i
     }
-    return number;
+    return sum;
 }
-console.log(sum(15));
+
+console.log(sum(1))
+console.log(sum(2))
+console.log(sum(10))
+console.log(sum(100000));
