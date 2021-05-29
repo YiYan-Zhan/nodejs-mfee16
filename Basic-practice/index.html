@@ -40,7 +40,7 @@
           xhr.open("GET","http://34.217.120.25:3000",false);
           xhr.onload= function(response){
               console.log(response);
-              message.innerHTML= `非同步: ${this.responseText}`; 
+              message.innerHTML= `同步: ${this.responseText}`; 
           }
           xhr.send();
       });
