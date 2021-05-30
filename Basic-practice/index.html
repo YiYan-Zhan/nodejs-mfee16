@@ -23,24 +23,24 @@
       countBtn.addEventListener("click", function () {
         count.innerText = parseInt(count.innerText, 10) + 1;
       });
-    //   非同步
-      asyncBtn.addEventListener("click",function(){
-          var xhr= new XMLHttpRequest();
+      //   非同步
+      asyncBtn.addEventListener("click", function () {
+        var xhr = new XMLHttpRequest();
         //   open後第三個參數為布林值，是否已非同步方式進行
-          xhr.open("GET","http://34.217.120.25:3000",true);
-          xhr.onload= function(){
-              message.innerHTML= `非同步: ${this.responseText}`; 
-          }
-          xhr.send();
+        xhr.open("GET", "http://34.217.120.25:3000", true);
+        xhr.onload = function () {
+          message.innerHTML = `非同步: ${this.responseText}`;
+        };
+        xhr.send();
       });
-    //   同步
-      syncBtn.addEventListener("click",function(){
-          var xhr= new XMLHttpRequest();
-          xhr.open("GET","http://34.217.120.25:3000",false);
-          xhr.onload= function(){
-              message.innerHTML= `同步: ${this.responseText}`; 
-          }
-          xhr.send();
+      //   同步
+      syncBtn.addEventListener("click", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://34.217.120.25:3000", false);
+        xhr.onload = function () {
+          message.innerHTML = `同步: ${this.responseText}`;
+        };
+        xhr.send();
       });
     </script>
   </body>
