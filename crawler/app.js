@@ -4,7 +4,12 @@
 let url2 = "https://www.twse.com.tw/exchangeReport/STOCK_DAY";
 
 const axios = require("axios");
+const moment = require("moment");
+let current = moment().format("YYYYMMDD");
 
+// console.log(current);
+
+// return;
 const fs = require("fs");
 // fs.readFile("stock.txt", "utf-8", function (error, data) {
 //   if (error == true) {
@@ -17,7 +22,7 @@ const fs = require("fs");
 function readFilePromise() {
   return new Promise(function (resolve, reject) {
     fs.readFile("stock.txt", "utf-8", function (error, data) {
-      if (error == true) {
+      if (error) {
         reject(error);
       } else {
         resolve(data);
@@ -32,7 +37,7 @@ readFilePromise().then(function (result) {
     method: "GET",
     url: url2,
     params: {
-      date: 20210530,
+      date: current,
       stockNo: result,
     },
   })
