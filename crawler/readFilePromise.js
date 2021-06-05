@@ -10,28 +10,21 @@ let current = moment().format("YYYYMMDD");
 // console.log(current);
 
 // return;
-const fs = require("fs");
-// fs.readFile("stock.txt", "utf-8", function (error, data) {
-//   if (error == true) {
-//     return console.error(error);
-//   } else {
-//     console.log(data);
-//   }
-// });
+const fs = require("fs/promises");
 
-function readFilePromise() {
-  return new Promise(function (resolve, reject) {
-    fs.readFile("stock.txt", "utf-8", function (error, data) {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(data);
-      }
-    });
-  });
-}
+// function readFilePromise() {
+//   return new Promise(function (resolve, reject) {
+//     fs.readFile("stock.txt", "utf-8", function (error, data) {
+//       if (error) {
+//         reject(error);
+//       } else {
+//         resolve(data);
+//       }
+//     });
+//   });
+// }
 
-readFilePromise().then(function (result) {
+fs.readFile("stock.txt", "utf-8").then(function (result) {
   console.log(result);
   axios({
     method: "GET",
