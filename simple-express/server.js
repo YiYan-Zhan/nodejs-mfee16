@@ -1,6 +1,7 @@
 const express = require("express");
-const current = require("moment");
-
+const moment = require("moment");
+const connection = require("./utils/db");
+let current = moment().format("YYYYMMDD");
 let app = express();
 
 app.use(express.static("public"));
@@ -12,7 +13,7 @@ app.set("views", "views");
 app.set("view engine", "pug");
 
 app.use(function (req, res, next) {
-    console.log("connected");
+    console.log(`connected at ${current}`);
     next();
 });
 
@@ -31,6 +32,22 @@ app.get("/aboutus", function (req, res) {
     res.render("aboutUs");
 });
 
-app.listen(3000, function () {
+app.get("/stock", async function (req, res) {
+    let result = await connection.queryAsync("SELECT * FROM stock");
+    // render("檔案指向",{將資料給到view})
+    res.render("stock/list", {
+        stocks: result,
+    });
+});
+
+app.get("/stock/detail", async function (req, res) {
+    let result = await connection.queryAsync("SELECT * FROM stock_price");
+    res.render("stock/detail", {
+        stock_prices: result,
+    });
+});
+
+app.listen(3000, async function () {
+    await connection.connectAsync();
     console.log("3000 port running");
 });

@@ -1,0 +1,19 @@
+th {
+    font-size: 16px;
+    color: #fff;
+    font-family: "微軟正黑體";
+    background: yellowgreen;
+    padding: 10px;
+}
+td {
+    font-family: "微軟正黑體";
+    font-size: 12px;
+    padding: 5px;
+    text-align: center;
+}
+td:nth-child(1) {
+    font-size: 12px;
+    color: #333;
+    font-family: "微軟正黑體";
+    background: #eee;
+}
