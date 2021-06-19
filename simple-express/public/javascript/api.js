@@ -7,3 +7,9 @@
         console.log(data);
     });
 })();
+
+(function () {
+    axios.get("/api/stock").then(function (res) {
+        console.log(res.data);
+    });
+})();
