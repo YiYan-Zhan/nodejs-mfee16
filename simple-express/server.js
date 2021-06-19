@@ -1,8 +1,10 @@
 const express = require("express");
 const moment = require("moment");
-const connection = require("./utils/db");
+// const connection = require("./utils/db");
 let current = moment().format("YYYYMMDD");
 let app = express();
+let stockRouter = require("./router/stock");
+app.use("/stock", stockRouter);
 
 app.use(express.static("public"));
 
@@ -30,24 +32,6 @@ app.get("/aboutus", function (req, res) {
     // res.send("About us");
 
     res.render("aboutUs");
-});
-
-app.get("/stock", async function (req, res) {
-    let result = await connection.queryAsync("SELECT * FROM stock");
-    // render("檔案指向",{將資料給到view})
-    res.render("stock/list", {
-        stocks: result,
-    });
-});
-
-app.get("/stock/:stockCode", async function (req, res) {
-    let result = await connection.queryAsync(
-        "SELECT * FROM stock_price where stock_id = ? order by date",
-        req.params.stockCode
-    );
-    res.render("stock/detail", {
-        details: result,
-    });
 });
 
 app.listen(3000, async function () {
