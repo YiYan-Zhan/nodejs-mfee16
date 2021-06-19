@@ -40,10 +40,13 @@ app.get("/stock", async function (req, res) {
     });
 });
 
-app.get("/stock/detail", async function (req, res) {
-    let result = await connection.queryAsync("SELECT * FROM stock_price");
+app.get("/stock/:stockCode", async function (req, res) {
+    let result = await connection.queryAsync(
+        "SELECT * FROM stock_price where stock_id = ? order by date",
+        req.params.stockCode
+    );
     res.render("stock/detail", {
-        stock_prices: result,
+        details: result,
     });
 });
 

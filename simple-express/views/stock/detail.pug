@@ -5,25 +5,17 @@ block content
 
     table 
         tr 
+            th 日期
             th 股票代碼
-            th 時間
-            th 開盤價 
+            th 開盤價
             th 最高價
             th 最低價
             th 收盤價
-            th 價格變動
-            th Transcations 
-            th Volume
-            th Amount
-        each stock_price in stock_prices
-            tr
-                td #{stock_price.stock_id}
-                td #{stock_price.date}
-                td #{stock_price.open_price}
-                td #{stock_price.high_price}
-                td #{stock_price.low_price}
-                td #{stock_price.close_price}
-                td #{stock_price.delta_price}
-                td #{stock_price.transactions}
-                td #{stock_price.volume}
-                td #{stock_price.amount}
+        each detail in details 
+            tr 
+                td #{detail.date}
+                td #{detail.stock_id}
+                td #{detail.open_price}
+                td #{detail.high_price}
+                td #{detail.low_price}
+                td #{detail.close_price}
