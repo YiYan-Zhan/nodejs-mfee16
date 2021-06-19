@@ -1,10 +1,12 @@
 const express = require("express");
 const moment = require("moment");
-// const connection = require("./utils/db");
+const connection = require("./utils/db");
 let current = moment().format("YYYYMMDD");
 let app = express();
 let stockRouter = require("./router/stock");
+let apiRouter = require("./router/api");
 app.use("/stock", stockRouter);
+app.use("/api", apiRouter);
 
 app.use(express.static("public"));
 
